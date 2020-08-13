@@ -26,6 +26,7 @@ Route::get('/contact', 'MainController@about')->name('contact');
 Route::get('/show', 'MainController@showProduct')->name('show');
 Route::get('/product/review', 'MainController@review')->name('review');
 
+//test update
 
 Auth::routes();
 
