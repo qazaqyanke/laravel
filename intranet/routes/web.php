@@ -24,6 +24,7 @@ Route::prefix('courses')->group(function () {
     Route::get('/', 'CoursesController@index')->name('courses.index');
     Route::post('/', 'CoursesController@store')->name('courses.store');
     Route::get('/{course}/chapters', 'CoursesController@chapters')->name('courses.chapters');
+    Route::delete('/{id}', 'CoursesController@destoryCourse')->name('courses.destroy');
 });
 
 Route::prefix('chapters')->group(function () {

@@ -24,6 +24,13 @@
                             <td>{{$course->name}}</td>
                             <td><a href="{{route('courses.chapters', $course)}}" class="btn btn-info">More</a></td>
                         </tr>
+                        <tr>
+                            <form action="{{route('courses.destroy', $course->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Delete" class="btn btn-danger" style="margin-top: 5px;">
+                            </form>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>
