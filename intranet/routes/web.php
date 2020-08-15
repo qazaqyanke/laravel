@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ChaptersController;
+use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\LessonsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,25 +20,21 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/courses', function (){
-   return view('courses.index') ;
+Route::prefix('courses')->group(function () {
+    Route::get('/', 'CoursesController@index')->name('courses.index');
+    Route::post('/', 'CoursesController@store')->name('courses.store');
+    Route::get('/{course}/chapters', 'CoursesController@chapters')->name('courses.chapters');
 });
 
-Route::get('/courses/{id}', function (){
-    return view('courses.show');
-})->name('courses.show');
+Route::prefix('chapters')->group(function () {
+    Route::get('/{chapter}/lessons', 'ChaptersController@lessons')->name('chapters.lessons');
+});
 
-Route::get('/chapters/{id}', function (){
-    return view('courses.chapter');
-})->name('courses.chapter');
-
-Route::get('/lessons/create', function (){
-   return view('courses.lesson_create');
-})->name('courses.lesson.create');
-
-Route::get('/lessons/{id}', function (){
-    return view('courses.lesson');
-})->name('courses.lesson');
+Route::prefix('lessons')->group(function () {
+    Route::get('/create', 'LessonsController@create')->name('lessons.create');
+    Route::get('/{lesson}', 'LessonsController@show')->name('lessons.show');
+    Route::post('/', 'LessonsController@store')->name('lessons.store');
+});
 
 Auth::routes();
 

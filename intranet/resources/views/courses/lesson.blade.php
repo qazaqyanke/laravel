@@ -6,8 +6,8 @@
 
             <div class="col">
 
-                <h2>Lesson title</h2>
-                <p>Content</p>
+                <h2>{{$lesson->title}}</h2>
+                <p>{!!  $lesson->content !!}</p>
 
             </div>
 

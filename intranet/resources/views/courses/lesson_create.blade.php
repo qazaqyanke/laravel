@@ -5,7 +5,37 @@
         <div class="row justify-content-center">
 
             <div class="col">
-                <textarea>Test</textarea>
+                <form method="post" action="{{route('lessons.store')}}">
+                    @csrf
+                    <div class="form-group">
+                        <label for="name">Lesson title</label>
+                        <input type="text" class="form-control" id="title" name="title">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type">Lesson type</label>
+                        <select class="form-control" id="type" name="type">
+                            @foreach($lessonTypes as $lessonType)
+                                <option value="{{$lessonType->id}}">{{$lessonType->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type">Chapter</label>
+                        <select class="form-control" id="chapter" name="chapter">
+                            @foreach($chapters as $chapter)
+                                <option value="{{$chapter->id}}">{{$chapter->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="content"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </form>
+
             </div>
 
         </div>
