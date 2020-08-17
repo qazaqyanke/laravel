@@ -37,6 +37,15 @@ Route::prefix('lessons')->group(function () {
     Route::post('/', 'LessonsController@store')->name('lessons.store');
 });
 
+Route::prefix('payments')->group(function () {
+    Route::get('/', 'PaymentsController@payment')->name('payments.payment');
+    Route::get('/success/{payment}', 'PaymentsController@success')->name('payments.success');
+    Route::get('/table', 'PaymentsController@table')->name('payments.tables');
+    Route::post('/', 'PaymentsController@proceed')->name('payments.proceed');
+});
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
