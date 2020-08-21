@@ -4,13 +4,23 @@
     <div class="container">
         <div class="row">
             <div class="col mb-4">
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createModal">
-                    Add course
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+                    Add chapter
                 </button>
             </div>
         </div>
         <div class="row justify-content-center">
+
             <div class="col">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <table id="courses">
                     <thead>
                     <tr>
@@ -19,22 +29,23 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($courses as $course)
+                    @foreach($chapters as $chapter)
                         <tr>
-                            <td>{{$course->name}}</td>
+                            <td>{{$chapter->name}}</td>
                             <td>
-                                <a href="{{route('courses.chapters', $course)}}" class="btn btn-info">More</a>
-                                <button class="btn btn-light" data-toggle="modal" data-target="#editModal"
-                                        data-path="{{route('courses.update', $course)}}"
-                                        data-params="{{$course->toJson()}}">
+                                <a href="{{route('chapters.lessons', $chapter)}}" class="btn btn-info">More</a>
+                                <button class="btn btn-light"
+                                        data-toggle="modal" data-target="#editModal"
+                                        data-path="{{route('chapters.update', $chapter)}}"
+                                        data-params="{{$chapter->toJson()}}">
                                     Edit
                                 </button>
                                 <button class="btn btn-danger"
-                                        onclick="event.preventDefault();document.getElementById('delete-form-{{$course->id}}').submit();">
+                                        onclick="event.preventDefault();document.getElementById('delete-form-{{$chapter->id}}').submit();">
                                     Delete
                                 </button>
-                                <form method="post" id="delete-form-{{$course->id}}" action="{{route('courses.delete',
-                            $course)}}">
+                                <form method="post" id="delete-form-{{$chapter->id}}" action="{{route('chapters.delete',
+                          $chapter)}}">
                                     @csrf
                                     @method('DELETE')
                                 </form>
@@ -48,19 +59,14 @@
         </div>
     </div>
 
-    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form method="post" action="{{route('courses.store')}}">
-                        @csrf
+                    <form>
                         <div class="form-group">
-                            <label>Course name</label>
-                            <input type="text" class="form-control" name="name">
-                        </div>
-                        <div class="form-group">
-                            <label>Cost</label>
-                            <input type="text" class="form-control" name="cost">
+                            <label for="name">Chapter name</label>
+                            <input type="text" class="form-control" id="name" name="name">
                         </div>
                         <button type="submit" class="btn btn-info">Submit</button>
                     </form>
@@ -73,16 +79,12 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form method="post" class="modal-form" action="">
+                    <form class="modal-form" method="post" action="">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="name">Course name</label>
+                            <label for="name">Chapter name</label>
                             <input type="text" class="form-control" id="name" name="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="cost">Cost</label>
-                            <input type="text" class="form-control" id="cost" name="cost">
                         </div>
                         <button type="submit" class="btn btn-info">Submit</button>
                     </form>
@@ -90,13 +92,14 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @section('scripts')
     <script>
-        $(document).ready( function () {
+        $(document).ready(function () {
             $('#courses').DataTable();
-        } );
+        });
         $('#editModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget)
             var path = button.data('path')
@@ -104,7 +107,7 @@
             var modal = $(this)
             modal.find('.modal-form').attr('action', path)
             modal.find('#name').val(params.name)
-            modal.find('#cost').val(params.cost)
         })
     </script>
 @endsection
+

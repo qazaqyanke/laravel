@@ -17,10 +17,14 @@ class CoursesController extends Controller
     public function store()
     {
         request()->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'cost' => 'required|numeric',
         ]);
 
-        Course::create(['name' => request('name')]);
+        Course::create([
+            'name' => request('name'),
+            'cost' => request('cost'),
+        ]);
 
         return back();
     }
@@ -31,10 +35,25 @@ class CoursesController extends Controller
         return view('courses.chapters', compact('chapters'));
     }
 
-    public function destoryCourse($id)
+    public function update(Course $course)
     {
-        $course = Course::findOrFail($id);
-        $course->delete();
+        request()->validate([
+            'name' => 'required|string',
+            'cost' => 'required|numeric',
+        ]);
+
+        $course->name = request('name');
+        $course->cost = request('cost');
+        $course->save();
+
+        return back();
+    }
+
+    public function delete(Course $course)
+    {
+        if ($course->chapters->isEmpty()) {
+            $course->delete();
+        }
 
         return back();
     }

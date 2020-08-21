@@ -14,7 +14,7 @@ class AlterCoursesAddColumnCost extends Migration
     public function up()
     {
         Schema::table('courses', function (Blueprint $table){
-            $table->double('cost');
+            $table->double('cost')->unsigned()->nullable();
         });
     }
 
