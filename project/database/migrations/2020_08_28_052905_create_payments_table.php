@@ -20,7 +20,10 @@ class CreatePaymentsTable extends Migration
             $table->double('amount');
             $table->timestamps();
 
-            $table->foreign('id')->references('user_id')->on('accounts');
+
+            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 
