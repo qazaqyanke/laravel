@@ -25,14 +25,14 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route('layout.myad')}}">My Ad</a>
                             <a class="dropdown-item" href="#">Profile</a>
-                            <a class="dropdown-item" href="#">Messages</a>
+                            <a class="dropdown-item" href="http://127.0.0.1:8000/chat/1">Messages</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('logout')}}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </div>

@@ -11,7 +11,9 @@ class MainController extends Controller
 {
     public function myad()
     {
-        return view('layout.myad');
+        $posts = Posts::on();
+
+        return view('layout.myad', compact('posts'));
     }
 
     public function index()

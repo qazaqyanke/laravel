@@ -29,10 +29,13 @@ Route::post('/ad','PostsController@store')->name('store');
 Route::get('/myad', 'MainController@myad')->name('layout.myad');
 Route::get('/ad/create', 'PostsController@create');
 Route::get('/ad/{id}', 'PostsController@show')->name('layout.adshow');
-Route::post('/ad/{id}/comments', 'PostsController@comments')->name('layouts.adshow.comments');
+//Route::post('/ad/{id}/comments', 'PostsController@comments')->name('layouts.adshow.comments');
 
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/chat/{user}', 'MessageController@show')->name('message.show');
+Route::post('/chat/{user}', 'MessageController@send')->name('message.send');

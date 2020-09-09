@@ -39,12 +39,10 @@
                 <p class="card-text">{{$post->price}}</p>
                 <a href="{{route('layout.adshow',$post->id)}}" class="btn btn-primary">Read More &rarr;</a>
             </div>
-            @foreach($users as $user)
             <div class="card-footer text-muted">
                 Posted on  by
-                <a href="/" style="text-decoration: none;">{{$user->name}}</a>
+                <a href="/" style="text-decoration: none;">{{$users[0]->name}}</a>
             </div>
-            @endforeach
         </div>
     </div>
 @endforeach
