@@ -24,7 +24,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route('layout.myad')}}">My Ad</a>
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="{{route('layout.profile', $user->id)}}">{{$user->name}}</a>
                             <a class="dropdown-item" href="http://127.0.0.1:8000/chat/1">Messages</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"

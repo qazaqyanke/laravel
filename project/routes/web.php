@@ -14,14 +14,6 @@ use App\Http\Controllers;
 |
 */
 
-//Route::get('/', function () {
-    //return view('index');
-//});
-
-Route::get('/profile', function (){
-   return view('layout.profile');
-});
-
 Route::get('/', 'MainController@index')->name('index');
 
 Route::get('/ad', 'PostsController@create')->name('layout.ad');
@@ -29,8 +21,7 @@ Route::post('/ad','PostsController@store')->name('store');
 Route::get('/myad', 'MainController@myad')->name('layout.myad');
 Route::get('/ad/create', 'PostsController@create');
 Route::get('/ad/{id}', 'PostsController@show')->name('layout.adshow');
-//Route::post('/ad/{id}/comments', 'PostsController@comments')->name('layouts.adshow.comments');
-
+Route::get('/profile/{id}', 'ProfileController@show')->name('layout.profile');
 
 
 Auth::routes();
@@ -39,3 +30,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/chat/{user}', 'MessageController@show')->name('message.show');
 Route::post('/chat/{user}', 'MessageController@send')->name('message.send');
+
+
