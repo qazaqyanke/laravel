@@ -19,7 +19,7 @@ Route::get('/' ,[MainControler::class, 'index']);
 
 Route::get('/home', function (){
     dd(Auth::user());
-});
+})->middleware(['auth', 'verified']);
 
 
 
