@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainControler;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Route::get('/' ,[MainControler::class, 'index']);
+
+Route::get('/home', function (){
+    dd(Auth::user());
+});
 
 
 
