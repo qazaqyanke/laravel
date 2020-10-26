@@ -118,7 +118,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5db4d769-6f3b-42da-8865-857f166f6b3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/verify-email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/password-confirm.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/FortifyServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/FortifyServiceProvider.php" afterDir="false" />
@@ -285,7 +286,7 @@
       <workItem from="1603468649311" duration="45000" />
       <workItem from="1603637949644" duration="1288000" />
       <workItem from="1603686914187" duration="4748000" />
-      <workItem from="1603693245741" duration="4522000" />
+      <workItem from="1603693245741" duration="9562000" />
     </task>
     <servers />
   </component>
@@ -308,9 +309,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="106" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1603468697635" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1603692249456">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1603712134857">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1603692249456" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1603712134857" />
   </component>
 </project>

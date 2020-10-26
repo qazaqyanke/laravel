@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/' ,[MainControler::class, 'index']);
 
 Route::get('/home', function (){
-    dd(Auth::user());
+    return view('home');
 })->middleware(['auth', 'verified']);
 
 
